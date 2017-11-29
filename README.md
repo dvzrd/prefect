@@ -1,19 +1,16 @@
-# PREFECT - User Authentication
+# Prefect
 
-A full-stack JavaScript solution for user authentication using React/Redux, Node/Koa and MongoDB.
+A full-stack JavaScript solution for **User Authentication** using *React/Redux*, *Node/Koa* and *MongoDB*.
 
 ## Stack
 
 The following libraries and/or frameworks are used in conjunction to create the user authentication pattern:
 
-**Client:** 
-* [React](https://github.com/facebook/react)
-* [Redux](https://github.com/reactjs/redux)
-**Server:**
-* [Koa](https://github.com/koajs/koa)
-* [Node](https://github.com/nodejs/node)
-**Collection:**
-* [MongoDB](https://github.com/mongodb/mongo)
+**Client:** [React](https://github.com/facebook/react) / [Redux](https://github.com/reactjs/redux)
+
+**Server:** [Koa](https://github.com/koajs/koa) / [Node](https://github.com/nodejs/node)
+
+**Database:** [MongoDB](https://github.com/mongodb/mongo)
 
 ## Setup
 

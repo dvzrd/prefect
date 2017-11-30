@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-import { containerBase, buttonBase, buttonDark } from '../../constants/interface/styles';
+import { Nav, ButtonDark, List, Item } from '../../constants/interface/elements';
 import { GET_USER, CHANGE_AUTH } from '../../constants/interface/requests';
+import { flex } from '../../constants/interface/styles';
 import { color, space } from '../../constants/design/composition';
 import { size, gutter } from '../../constants/design/content';
 
@@ -30,12 +31,10 @@ const Navigation = ({ routes, user, authenticated, isMobile, isMenuOpen, toggleM
     <Menu isMobile={isMobile} isMenuOpen={isMenuOpen}>
       {routes.filter(route => route.authenticated === authenticated).map((route, index) => (
         <MenuItem key={index}>
-          {route.path &&
-            <Link to={route.path}>{route.name}</Link>
-          }
-          {(route.onAuth === GET_USER) &&
-            <Link to={route.path}>{(user && user.firstName) || route.name}</Link>
-          }
+          {route.path && (route.onAuth === GET_USER
+            ? <Link to={route.path}>{(user && user.firstName) || route.name}</Link>
+            : <Link to={route.path}>{route.name}</Link>
+          )}
           {(route.onClick === CHANGE_AUTH) &&
             <Button onClick={logoutUser}>{route.name}</Button>
           }
@@ -45,16 +44,7 @@ const Navigation = ({ routes, user, authenticated, isMobile, isMenuOpen, toggleM
   </Nav>
 );
 
-const Nav = styled.nav`
-  ${containerBase};
-  display: flex;
-  flex: 5;
-  flex-flow: row wrap;
-  justify-content: flex-end;
-`;
-
-const MenuButton = styled.button`
-  ${buttonDark};
+const MenuButton = ButtonDark.extend`
   order: 1;
   margin-bottom: 0;
   margin-left: ${space.base};
@@ -64,28 +54,32 @@ const MenuButton = styled.button`
 
 const MenuIcon = styled.i`
   color: ${color.white};
+  font-style: normal;
 `;
 
-const Menu = styled.ul`
+const Menu = List.extend`
+  ${flex};
   display: ${props => props.isMobile
     ? (props.isMenuOpen ? 'flex' : 'none')
     : 'flex'
   };
-  flex-flow: row wrap;
-  justify-content: flex-end;
-  margin: 0;
   padding: 0;
   flex: 1;
+  justify-content: flex-end;
   align-self: flex-end;
   list-style: none;
 `;
 
-const MenuItem = styled.li`
+const MenuItem = Item.extend`
   margin-left: ${space.base};
+
+  > * {
+    color: ${color.emperor};
+  }
 `;
 
-const Button = styled.button`
-  ${buttonBase};
+const Button = ButtonDark.extend`
+  margin: 0;
   padding: ${gutter.fit};
   font-size: ${size.legal};
 `;

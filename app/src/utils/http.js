@@ -7,7 +7,7 @@ import { PENDING, SUCCESS, POST, PUT, GET, DELETE } from '../constants/interface
 const API_URL = getApiUrl();
 
 /**
- * logError  - Log error without UI display
+ * logError - Log error without UI display
  * @param {Object} error      Error object caught in catch block
  * @param {String} type       Action type that caused error
  *

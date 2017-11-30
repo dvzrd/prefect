@@ -1,118 +1,90 @@
-import { css } from 'styled-components';
+import { css, keyframes } from 'styled-components';
 
 import media from '../../utils/media';
-import { frame } from './breakpoints';
-import { ratio, micro } from '../design/structure';
+import { frame as breakpoint } from './breakpoints';
 import { size, weight, height, gutter } from '../design/content';
 import { color, space, width, shadow, speed } from '../design/composition';
 
-// wrapperBase - add base styles for wrappers surrounding mane content to push footer to bottom.
-export const wrapperBase = css`
-  display: flex;
-  flex: 100 100%;
-  z-index: 2;
-`;
-
-// containerBase - add base styles for containers that have multiple children.
-export const containerBase = css`
-  display: flex;
-  overflow-x: hidden;
+// base - add base styles to elements.
+export const base = css`
   position: relative;
+  overflow-x: hidden;
   width: 100%;
   height: auto;
   margin: 0 auto;
   padding: 0;
-  flex-flow: row wrap;
-  flex: 1 100%;
 `;
 
-// containerFrame - add responsive frame container using frame breakpoints.
-export const containerFrame = css`
-  ${containerBase};
+// flex - add flex styles to elements.
+export const flex = css`
+  display: flex;
+  flex: 1 100%;
+  flex-flow: row wrap;
+  align-content: flex-start;
+`;
+
+// frame - add responsive frame styles to container elements.
+export const frame = css`
+  max-width: ${breakpoint.phablet}em;
   padding: ${space.base};
-  max-width: ${frame.phablet}em;
 
   ${media.tablet`
-    max-width: ${frame.tablet}em;
+    max-width: ${breakpoint.tablet}em;
   `};
 
   ${media.laptop`
-    max-width: ${frame.laptop}em;
+    max-width: ${breakpoint.laptop}em;
   `};
 
   ${media.desktop`
-    max-width: ${frame.desktop}em;
+    max-width: ${breakpoint.desktop}em;
   `};
 `;
 
-// containerCard - add card container with a max-width property.
-export const containerCard = css`
-  ${containerBase};
-  padding: ${space.base};
+// card - add card styles to container elements
+export const card = css`
+  position: relative;
   max-width: ${width.card};
-`;
-
-// formBase - add base layer style to form containers
-export const formBase = css`
-  ${containerBase};
   padding: ${space.base};
-`;
-
-// formCard - extend form base to match card container styles
-export const formCard = css`
-  ${formBase};
-  padding: ${space.base};
-  justify-content: center;
   box-shadow: ${shadow.core} ${color.gallery};
+  background-color: ${color.ceramic};
 
   ${media.phablet`
     padding: ${space.lead};
   `};
 `;
 
-// headingBase - base heading style sets heading margin, font-size and font-weight.
-export const headingBase = css`
-  display: flex;
-  flex-flow: row wrap;
-  flex: 1 100%;
+// hero - add hero styles to elements
+export const hero = css`
+  min-height: 50vh;
+  flex: 5 100%;
+
+  ${media.phablet`
+    min-height: 100vh;
+  `};
+
+  ${media.tablet`
+    min-height: 75vh;
+  `};
+`;
+
+// center - add center styles to elements
+export const center = css`
+  justify-content: center;
+  align-items: center;
+`;
+
+// heading - add heading styles to elements
+export const heading = css`
+  position: relative;
   margin: ${gutter.apex};
-  font-size: ${size.point};
+  flex: 1 100%;
+  font-size: ${size.mark};
   font-weight: ${weight.apex};
 `;
 
-// headingHero - extend base heading with `hero` font-size
-export const headingHero = css`
-  ${headingBase};
-  font-size: ${size.hero};
-`;
-
-// headingLead - extend base heading with `lead` font-size.
-export const headingLead = css`
-  ${headingBase};
-  font-size: ${size.lead};
-`;
-
-// headingDirect - extend base heading with `direct` font-size.
-export const headingDirect = css`
-  ${headingBase};
-  font-size: ${size.direct};
-`;
-
-// headingBrief - extend base heading with `brief` font-size.
-export const headingBrief = css`
-  ${headingBase};
-  font-size: ${size.brief};
-`;
-
-// headingPoint - extend base heading with `point` font-size.
-export const headingPoint = css`
-  ${headingBase};
-  font-size: ${size.point};
-`;
-
-// buttonBase - default button style using a neutral color.
-export const buttonBase = css`
-  display: inline-block;
+// button - add button styles to elements
+export const button = css`
   position: relative;
   cursor: pointer;
   margin: ${gutter.base};
@@ -120,85 +92,47 @@ export const buttonBase = css`
   outline: none;
   border: 0;
   border-radius: 0;
-  box-shadow: ${shadow.base} ${color.silver};
-  background-color: ${color.gallery};
-  color: ${color.emperor};
+  box-shadow: none;
+  background-color: transparent;
+  color: inherit;
   font-size: ${size.base};
   text-align: center;
   text-decoration: none;
   line-height: ${height.base};
   transition: all ${speed.base};
   transition-timing-function: ease-out;
+`;
 
-  &:hover {
-    box-shadow: ${shadow.core} ${color.emperor};
-    background-color: ${color.silver};
-    color: ${color.blackcurrant};
+// list - add list styles
+export const list = css`
+  margin: 0;
+  padding-left: ${space.icon};
+`;
+
+// item - add list item styles
+export const item = css`
+  margin: 0;
+  padding: 0;
+`;
+
+// spin - animation for loader
+export const spin = keyframes`
+  from {
+    transform: rotate(0deg);
   }
 
-  &:active {
-    box-shadow: ${shadow.base} ${color.silver} inset;
-    background-color: ${color.gallery};
-    color: ${color.emperor};
+  to {
+    transform: rotate(359deg);
   }
 `;
 
-// buttonBright - extend base button with a bright color to grab the user's attention.
-export const buttonBright = css`
-  ${buttonBase};
-  box-shadow: ${shadow.base} ${color.emperor};
-  background-color: ${color.disco};
-  color: ${color.white};
-
-  &:hover {
-    box-shadow: ${shadow.core} ${color.blackcurrant};
-    background-color: ${color.maroonflush};
-    color: ${color.white};
+// reverseSpin - animation for loader
+export const reverseSpin = keyframes`
+  from {
+    transform: rotate(359deg);
   }
 
-  &:active {
-    box-shadow: ${shadow.base} ${color.maroonflush} inset;
-    background-color: ${color.disco};
-    color: ${color.white};
-  }
-`;
-
-// buttonLight - extend base button with a light color to contrast dark backgrounds.
-export const buttonLight = css`
-  ${buttonBase};
-  box-shadow: ${shadow.base} ${color.gallery};
-  background-color: ${color.chiffon};
-  color: ${color.emperor};
-
-  &:hover {
-    box-shadow: ${shadow.core} ${color.silver};
-    background-color: ${color.berylgreen};
-    color: ${color.blackcurrant};
-  }
-
-  &:active {
-    box-shadow: ${shadow.base} ${color.berylgreen} inset;
-    background-color: ${color.chiffon};
-    color: ${color.emperor};
-  }
-`;
-
-// buttonDark - extend base button with a dark color to constract light backgrounds.
-export const buttonDark = css`
-  ${buttonBase};
-  box-shadow: ${shadow.base} ${color.blackcurrant};
-  background-color: ${color.emperor};
-  color: ${color.white};
-
-  &:hover {
-    box-shadow: ${shadow.core} ${color.emperor};
-    background-color: ${color.blackcurrant};
-    color: ${color.white};
-  }
-
-  &:active {
-    box-shadow: ${shadow.base} ${color.blackcurrant} inset;
-    background-color: ${color.emperor};
-    color: ${color.white};
+  to {
+    transform: rotate(0deg);
   }
 `;

@@ -29,11 +29,11 @@ class Navigation extends Component {
   }
 
   checkMobile = () => this.setState({
-    isMobile: window.innerWidth / this.baseFontSize <= breakpoints.tablet
+    isMobile: window.innerWidth / this.baseFontSize <= breakpoints.tablet,
   });
 
   toggleMenu = () => this.setState({
-    isMenuOpen: !this.state.isMenuOpen
+    isMenuOpen: !this.state.isMenuOpen,
   });
 
   render() {

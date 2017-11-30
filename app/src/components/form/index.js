@@ -1,9 +1,8 @@
 import React from 'react';
-import styled from 'styled-components';
 import { Field } from 'redux-form';
 
 import Notification from '../notification';
-import { formCard, buttonBright } from '../../constants/interface/styles';
+import { Form as FormContainer, ButtonBright } from '../../constants/interface/elements';
 import { formPropTypes } from '../../constants/interface/proptypes';
 import { space } from '../../constants/design/composition';
 
@@ -16,21 +15,16 @@ import { space } from '../../constants/design/composition';
  * @param {Function} onSubmit  To handle the form submission.
  */
 const Form = ({ onSubmit, errors, message, inputs, cta }) => (
-  <Container onSubmit={onSubmit}>
+  <FormContainer onSubmit={onSubmit}>
     <Notification errors={errors} />
     <Notification message={message} />
     {inputs.map((input, index) =>
       <Field key={index} {...input} />)}
     <Button type="submit">{cta}</Button>
-  </Container>
+  </FormContainer>
 );
 
-const Container = styled.form`
-  ${formCard};
-`;
-
-const Button = styled.button`
-  ${buttonBright};
+const Button = ButtonBright.extend`
   margin-top: ${space.base};
   margin-bottom: 0;
 `;

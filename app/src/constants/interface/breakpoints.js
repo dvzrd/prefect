@@ -2,7 +2,7 @@
  * Breakpoints - for media queries that scale with different devices
  *
  * Set for 'em' units with a 16px base.
- * Use to create a media utility template inside `../utils/media`
+ * Use to create a media utility template inside `../../utils/media`
  */
 const breakpoints = {
   phone: 20, // 320px

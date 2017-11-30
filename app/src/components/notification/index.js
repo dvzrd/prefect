@@ -22,9 +22,10 @@ const Notification = ({ errors, message }) => (
 );
 
 const Wrapper = styled.aside`
-  display: ${props => props.hasNotification ? 'block' : 'none'};
+  display: ${props => props.hasNotification ? 'flex' : 'none'};
   margin-bottom: ${space.base};
   padding: ${space.base};
+  flex-flow: row wrap;
   background-color: ${props => props.hasErrors ? color.pomegranate : color.java};
 `;
 

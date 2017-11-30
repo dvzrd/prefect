@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { inputPropTypes } from '../../constants/interface/proptypes';
-import { color, space } from '../../constants/design/composition';
+import { color, space, shadow, speed } from '../../constants/design/composition';
 import { size, weight } from '../../constants/design/content';
 
 /**
@@ -37,7 +37,7 @@ const Fieldset = styled.fieldset`
 const Label = styled.label`
   margin-bottom: ${space.press};
   font-weight: ${weight.core};
-  color: ${color.blackcurrant};
+  color: ${color.dustygray};
 `;
 
 const Field = styled.input`
@@ -45,8 +45,16 @@ const Field = styled.input`
   flex: 1 100%;
   margin-bottom: ${space.press};
   padding: ${space.split};
+  outline: none;
+  border: ${space.dash} solid ${color.dustygray};
   color: ${color.emperor};
   font-size: ${size.base};
+  transition: all ${speed.base};
+
+  &:focus {
+    border-color: ${color.berylgreen};
+    box-shadow: ${shadow.blur} ${color.chiffon};
+  }
 `;
 
 const Error = styled.output`

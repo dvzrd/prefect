@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
 
+import { spin, reverseSpin } from '../../constants/interface/styles';
 import { color, space } from '../../constants/design/composition';
 
 const Loader = () => (
@@ -22,26 +23,6 @@ const Wrapper = styled.figure`
   align-items: center;
   justify-content: center;
   z-index: 10;
-`;
-
-const spin = keyframes`
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(359deg);
-  }
-`;
-
-const reverseSpin = keyframes`
-  from {
-    transform: rotate(359deg);
-  }
-
-  to {
-    transform: rotate(0deg);
-  }
 `;
 
 const Spinner = styled.div`

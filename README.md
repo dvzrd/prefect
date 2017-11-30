@@ -101,43 +101,81 @@ The `api/` directory contains all files related to the server, organized inside 
 
 #### Config
 
-* Auth
+**Auth** - configure koa passport for login
 
-* Database
+**Database** - configure database for various enviornments
 
-* Email
+**Email** - configure email for various environments
 
-* Server
+**Server** - configure server for various environments
 
 #### Controllers
 
-* Auth
+##### Auth
 
-* User
+**createTokenCtx** - create JWT info for ctx.body
+
+**jwtAuth** - authenticate a user via a JWT in the Authorization header
+
+**register** - register a new user, if a user with that email address does not already exist
+
+**forgotPassword** - request password reset sends an email with a reset link for security
+
+**resetPassword** - use token from email to reset password
+
+**requireRole** - ensure user has a high enough role to access an endpoint
+
+**getAuthenticatedUser** - return JSON for the authenticated user
+
+##### User
+
+**getUsers** - Returns JSON for all users
+
+**getUser** - Returns JSON for specified user
+
+**editUser** - Edits single user
+
+**deleteUser** - Deletes single user
 
 #### Models
 
-* User
+**User** - schema for mongoDB user collection
 
 #### Routes
 
-* Auth
+**Auth** - koa routes for auth request endpoints
 
-* User
+**User** - koa routes for user request endpoints 
 
 #### Test
 
-* User
+**User** - tests for user authentication
 
 #### Utils
 
-* Email
+##### Email
 
-* Error
+**sendEmail** - send emails with mailgun
 
-* User
+##### Error
 
-* Validation
+**errorHandler** - handle server errors
+
+**errorLogger** - log errors to console
+
+##### User
+
+**standardizeUser** - standardizes user and strips unnecessary data
+
+**generateJWT** - signs JWT with user data
+
+**getRole** - return a numerical value, which corresponds to the user's role
+
+##### Validation
+
+**responseValidator** - validate responses and return corresponding errors
+
+**filterSensitiveData** - filter out sensitive data from a request body
 
 ### APP
 
@@ -145,82 +183,167 @@ The `app/` directory contains all files related to the client, organized inside 
 
 #### Components
 
-##### Authentication
+**Authentication** - renders authentication forms and links
 
-##### Dashboard
+**Dashboard** - renders dashboard (must be authenticated)
 
-##### Form
+**Form** - renders form (auth)
 
-##### Header
+**Header** - renders header (logo and nav)
 
-##### Input
+**Input** - renders form inputs (redux-form)
 
-##### Loader
+**Loader** - renders loading screen (when auth request is processing)
 
-##### Navigation
+**Navigation** - renders router links
 
-##### Notification
+**Notification** - renders form errors and messages 
 
 #### Constants
 
 ##### Copy
 
+**authentication** - copy for authentication forms
+
+**dashboard** - copy for dashboard
+
+**meta** - copy for meta data
+
+**navigation** - copy for navigation menu
+
 ##### Design
 
+**composition** - css variables for design composition (colors, space, width, etc..)
+
+**content** - css variables for design content (fonts, sizes, margins, etc...)
+
+**structure** - css variables for design structure (ratio, scales, fractions, etc...)
+
 ##### Interface
+
+**breakpoints** - media query breakpoints
+
+**elements** - common elements with base styles  using styled-components
+
+**proptypes** - common propTypes that are shared across multiple components
+
+**requests** - redux action types and request endpoints
+
+**styles** - common styles using styled-components css feature
 
 #### Containers
 
 ##### Authentication
 
+**index** - higher order component to wrap components that need to be authenticated.
+
+**forgot_password** - container for forgotPassword authentication method
+
+**login** - container for login authentication method
+
+**register** - container for register authentication method
+
+**reset_password** - container for resetPassword authentication method
+
+##### Dashboard
+
+**index** - container for dashboard component
+
 ##### Navigation
+
+**index** - container for navigation component
 
 #### Modules
 
-* **Authentication** - change auth and get authenticated user
-* **User** - change auth and get [authenticated] user(s)
-* **Form** - process forms through redux-form
+**Authentication** - change auth and get authenticated user
+
+**User** - change auth and get [authenticated] user(s)
+
+**Form** - process forms through redux-form
 
 ##### Authentication
 
-* **changeAuthentication** - change authentication request
-* **login** - authenticate a user with an email and password
-* **register** - create a new account user account
-* **setPostAuthPath** - save desired pre-auth path to state
-* **logoutUser** - log user out by clearing auth state and token cookie
-* **forgotPassword** - send user an email with a token to reset their password
-* **resetPassword** - Reset a user's password, given a valid token
-* **getAuthenticatedUser** - retrieve the logged in user's information
+**changeAuthentication** - change authentication request
+
+**login** - authenticate a user with an email and password
+
+**register** - create a new account user account
+
+**setPostAuthPath** - save desired pre-auth path to state
+
+**logoutUser** - log user out by clearing auth state and token cookie
+
+**forgotPassword** - send user an email with a token to reset their password
+
+**resetPassword** - Reset a user's password, given a valid token
+
+**getAuthenticatedUser** - retrieve the logged in user's information
 
 ##### User
 
-* **getUser** - fetch user from API, given id
-* **getUsers** - fetch users from API
-* **getAuthenticatedUser** - authenticated user selector
+**getUser** - fetch user from API, given id
+
+**getUsers** - fetch users from API
+
+**getAuthenticatedUser** - authenticated user selector
 
 #### Routes
 
-* **Login**
-* **Register**
-* **Forgot Password**
-* **Reset Password**
+**Login** - container authentication renders login component
+
+**Register** - container authentication renders register component
+
+**Forgot Password** - container authentication renders forgot password component
+
+**Reset Password** - container authentication renders reset password component
 
 ##### Authenticated
 
-* **Dashboard**
-* **Profile**
+**Dashboard** - container dashboard renders dashboard component
 
 #### Utils
 
-* **Cookie**
-* **Environment**
-* **HTTP**
-* **Media**
-* **Store**
+##### Cookie
 
-## Documentation
+**setCookie** - sets a cookie in the user's browser
 
-Coming soon
+**getCookie** - retrieves a cookie. Not super necessary, but it keeps things uniform
+
+**deleteCookie** - removes a cookie. Not super necessary, but it keeps things uniform
+
+##### Environment
+
+**getEnvironment** - returns the current environment, or development by default
+
+**getApiUrl** - returns the URL for the api, given the current environment
+
+**getAppUrl** - returns the URL for the app, given the environment
+
+##### HTTP
+
+**logError** - log error without UI display
+
+**httpRequest** - generic action to make an http request with axios
+
+**post** - generic action to make a POST request with axios
+
+**put** - generic action to make a PUT request with axios
+
+**get** - generic action to make a GET request with axios
+
+**del** - generic action to make a DELETE request with axios
+
+##### Media
+
+**media** - iterates through media query breakpoints to create a media template utility using styled-components css feature
+
+##### Store
+
+**updateStore** - returns an object containing updated state. This helper builds generic state (messages, errors, loading)
+
+**buildGenericInitialState** - builds initial state for a set of constants (loading, errors, messages)
+
+**removeMetaFromState** - remove metadata from state (general selector)
 
 ## Resources
 

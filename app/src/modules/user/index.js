@@ -35,4 +35,3 @@ export const getUsers = () => async (dispatch) => {
  * getAuthenticatedUser - Authenticated user selector
  */
 export const getAuthenticatedUser = ({ user, authentication }) => user[authentication.user];
-

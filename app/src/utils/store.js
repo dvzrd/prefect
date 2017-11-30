@@ -3,8 +3,8 @@ import _ from 'lodash';
 import { PENDING, SUCCESS, ERROR } from '../constants/interface/requests';
 
 /**
- * updateStore  - Returns an object containing updated state. This helper
- *                builds generic state (messages, errors, loading)
+ * updateStore - Returns an object containing updated state. This helper
+ *               builds generic state (messages, errors, loading)
  *
  * @param {Object} state          Current state of the store
  * @param {Object} action         Redux action for the store to respond to
@@ -68,8 +68,8 @@ export const updateStore = (state, action, extraValues = {}) => {
 };
 
 /**
- * buildGenericInitialState  - Builds initial state for a set of constants
- *                             (loading, errors, messages)
+ * buildGenericInitialState - Builds initial state for a set of constants
+ *                            (loading, errors, messages)
  *
  * @param {Array} constants  Array of constants to build state around
  * @returns {Object}
@@ -90,7 +90,7 @@ export const buildGenericInitialState = constants => ({
 });
 
 /**
- * handleError  - Dispatches error properly to Redux stores
+ * handleError - Dispatches error properly to Redux stores
  *
  * @param {Function} dispatch Redux dispatch function
  * @param {Object}   error    Error container
@@ -106,7 +106,7 @@ export const handleError = (dispatch, error, type) => {
 };
 
 /**
- * removeMetaFromState  - Remove metadata from state (general selector)
+ * removeMetaFromState - Remove metadata from state (general selector)
  *
  * @param {Object} state  State to filter metadata out of
  */

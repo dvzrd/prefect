@@ -7,7 +7,7 @@ export const getEnvironment = () => process.env.NODE_ENV
   : 'development';
 
 /**
- * getApiUrl  - Returns the URL for the api, given the current environment
+ * getApiUrl - Returns the URL for the api, given the current environment
  * @returns {String}
  */
 export const getApiUrl = () => {
@@ -25,7 +25,7 @@ export const getApiUrl = () => {
 };
 
 /**
- * getAppUrl  - Returns the URL for the app, given the environment
+ * getAppUrl - Returns the URL for the app, given the environment
  * @returns {String}
  */
 export const getAppUrl = () => {

@@ -14,8 +14,10 @@ module.exports = {
     java: '#24EBA6',         // message (success) color
     emperor: '#555152',      // body color
     blackcurrant: '#2E2633', // heading color
+    dustygray: '#9C9596',    // input border color
     silver: '#BBBBBB',       // shadow color
     gallery: '#EEEEEE',      // border color
+    ceramic: '#fEFFFD',      // card color
     white: '#FFFFFF',        // background color
   },
   space: {
@@ -33,7 +35,7 @@ module.exports = {
     shy: '0.05em',
   },
   width: {
-    card: '24em',
+    card: '26em',
   },
   shadow: {
     base: '0 0 0 0.05em',

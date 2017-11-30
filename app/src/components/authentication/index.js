@@ -6,7 +6,8 @@ import { Link } from 'react-router-dom';
 import Form from '../form/';
 import Loader from '../loader/';
 import { errorPropTypes } from '../../constants/interface/proptypes';
-import { wrapperBase, containerCard, headingDirect } from '../../constants/interface/styles';
+import { Main as MainWrapper, HeadingDirect, Container } from '../../constants/interface/elements';
+import { base, flex, card, center } from '../../constants/interface/styles';
 import { space } from '../../constants/design/composition';
 
 /**
@@ -38,23 +39,34 @@ const Authentication = ({ loading, heading, onSubmit, errors, message, inputs, c
   </Main>
 );
 
-const Main = styled.main`
-  ${wrapperBase};
-  align-items: center;
-  justify-content: center;
+const Main = MainWrapper.extend`
+  ${center};
+  padding: ${space.base};
 `;
 
 const Card = styled.figure`
-  ${containerCard};
+  ${base};
+  ${flex};
+  ${card};
+  margin-top: ${space.core};
+  margin-bottom: ${space.core};
 `;
 
-const Heading = styled.h2`
-  ${headingDirect};
-  margin-top: 0;
+const Heading = HeadingDirect.extend`
+  margin-top: ${space.split};
 `;
 
-const Links = styled.div`
-  margin-top: ${space.base};
+const Links = Container.extend`
+  margin-top: ${space.icon};
+
+  > * {
+    margin-right: ${space.base};
+    margin-bottom: ${space.split};
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
 `;
 
 Authentication.propTypes = {

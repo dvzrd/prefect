@@ -5,11 +5,6 @@ const navigation = [
     name: 'Dashboard',
     path: ENDPOINT_DASHBOARD,
     authenticated: true,
-  },
-  {
-    name: 'Profile',
-    path: ENDPOINT_PROFILE,
-    authenticated: true,
     onAuth: GET_USER,
   },
   {
